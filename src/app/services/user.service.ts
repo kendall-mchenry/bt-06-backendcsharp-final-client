@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs';
@@ -64,7 +64,11 @@ export class UserService {
   }
 
   // AUTH / PUT edit user
-  // editCurrentUser(): Observable<User> {
+  editCurrentUser(): Observable<User> {
+    let reqHeaders = {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+    };
 
-  // }
+    return this.http.put<User>(`${this.userBaseUrl}/current/edit`, { headers: reqHeaders });
+  }
 }
