@@ -16,7 +16,7 @@
     
     <span *ngIf="(currentUser | json) != '{}' ">
         <span> | </span>
-        <span>Welcome, {{currentUser.username}}</span>
+        <span>Welcome, <a [routerLink]="['profile/', currentUser.userId]">{{currentUser.username}}</a></span>
         <span> | </span>
 
         <button (click)="signout()" title="Sign Out">Sign Out</button>

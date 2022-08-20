@@ -13,17 +13,17 @@ export class PostFeedComponent implements OnInit {
 
   postList: Post[] = [];
 
-  currentPost: Post = new Post();
+  // currentPost: Post = new Post();
 
   userList: User[] = [];
 
-  postUser: User = new User();
-  postUserId?: number = 0;
+  // postUser: User = new User();
+  // postUserId?: number = 0;
 
   currentUser: User = new User();
-  currentUserId?: number = 0;
+  // currentUserId?: number = 0;
 
-  postUsername?: string = "";
+  // postUsername?: string = "";
 
   constructor(private postService: PostService, private userService: UserService) { }
 
@@ -40,42 +40,55 @@ export class PostFeedComponent implements OnInit {
       this.currentUser = user;
     });
 
-    this.currentUserId = this.currentUser.userId;
+       
+
+    // this.currentUserId = this.currentUser.userId;
     
     // loop through every item in the postlist
-    for (let post of this.postList) {
-      this.postUserId = post.userId;
+    // for (let post of this.postList) {
+    //   this.postUserId = post.userId;
 
-      if (this.postUserId == this.currentUserId) {
-        this.postUsername = this.currentUser.username;
-      } else {
-        // OR do I need to find the active user in the user list?
-        this.userService.getUserById(this.postUserId!).subscribe(user => {
-          this.postUser = user;
-        });
+    //   if (this.postUserId == this.currentUserId) {
+    //     this.postUsername = this.currentUser.username;
+    //   } else {
+    //     // OR do I need to find the active user in the user list?
+    //     this.userService.getUserById(this.postUserId!).subscribe(user => {
+    //       this.postUser = user;
+    //     });
         
-        this.postUsername = this.postUser.username;
-      }
-    }
+    //     this.postUsername = this.postUser.username;
+    //   }
+    // }
     
   }
+
+  // getPostUserById(id: number): number {
+  //   this.userService.getUserById(id).subscribe(user => {
+  //     this.postUser = user;
+  //   });
+
+  //   this.postUserId = this.postUser.userId!;
+
+  //   return this.postUserId;
+  // }
+
 
   // also add created date/time to the post
   // add photo to the post OR just to the user profile page?
   
-  getPostUser(postId: number) {
-    this.postService.getPostById(postId).subscribe(post => {
-      this.currentPost = post;
-    });
+  // getPostUser(postId: number) {
+  //   this.postService.getPostById(postId).subscribe(post => {
+  //     this.currentPost = post;
+  //   });
 
-    this.postUserId = this.currentPost.userId;
+  //   this.postUserId = this.currentPost.userId;
     
-    this.userService.getUserById(this.postUserId!).subscribe(user => {
-      this.postUser = user;
-    });
+  //   this.userService.getUserById(this.postUserId!).subscribe(user => {
+  //     this.postUser = user;
+  //   });
 
-    this.postUsername = this.postUser.username;
+  //   this.postUsername = this.postUser.username;
 
-  }
+  // }
   
 }

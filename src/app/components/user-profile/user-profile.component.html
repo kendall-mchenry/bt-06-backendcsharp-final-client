@@ -19,7 +19,7 @@
     <h3>{{post.title}}</h3>
     <p>{{post.content}}</p>
     <br>
-    <p>{{username}}</p>
+    <p>{{viewUser.username}}, {{post.postedDate}}</p>
     
     <div *ngIf="currentUser.userId == viewUser.userId">
         <button [routerLink]="['/posts/edit', post.postId]">Edit Post</button>

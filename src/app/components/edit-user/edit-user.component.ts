@@ -18,6 +18,7 @@ export class EditUserComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe(user => {
       this.currentUser = user;
+      console.log(`Edit user is: ${this.currentUser.username}`)
     });
     
   }

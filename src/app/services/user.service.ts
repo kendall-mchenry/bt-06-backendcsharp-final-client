@@ -95,6 +95,6 @@ export class UserService {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     };
 
-    return this.http.put<User>(`${this.userBaseUrl}/current/edit`, { headers: reqHeaders });
+    return this.http.put<User>(`${this.userBaseUrl}/current/edit`, editUser, { headers: reqHeaders });
   }
 }
