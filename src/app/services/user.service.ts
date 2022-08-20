@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs';
-
+import { tap, shareReplay } from 'rxjs';
+import * as moment from "moment";
 
 
 @Injectable({
@@ -35,6 +35,17 @@ export class UserService {
         localStorage.setItem('myUserToken', response);
       }));
   }
+
+  // Need to handle expiration of token somewhere?
+
+  // from Angular's documentation
+  // login(email:string, password:string ) {
+  //   return this.http.post<User>('/api/login', {email, password})
+  //     .do(res => this.setSession)
+  //       // this is just the HTTP call, 
+  //       // we still need to handle the reception of the token
+  //       .shareReplay();
+// }
 
 //   public isLoggedIn() {
 //     return moment().isBefore(this.getExpiration());

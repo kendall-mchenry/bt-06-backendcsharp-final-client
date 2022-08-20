@@ -35,9 +35,9 @@ export class UserProfileComponent implements OnInit {
       this.viewUser = user;
     });
 
-    // I may not need this?
     this.userService.getCurrentUser().subscribe(user => {
       this.currentUser = user;
+      console.log(`Profile current user is: ${this.currentUser.username}`)
     });
 
     // How to make sure these are authenticated and the view allows for edit & delete?

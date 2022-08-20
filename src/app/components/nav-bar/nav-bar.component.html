@@ -1,15 +1,29 @@
 <nav role="navigation">
-    <a routerLink="/signup" title="Sign Up">Sign Up</a>
-    <span> | </span>
-    <a routerLink="/signin" title="Sign In">Sign In</a>
-    <span> | </span>
+    <span *ngIf="(currentUser | json) == '{}' ">
+        <a routerLink="/signup" title="Sign Up">Sign Up</a>
+        <span> | </span>
+        <a routerLink="/signin" title="Sign In">Sign In</a>
+        <span> | </span>
+    </span>
+    
     <a routerLink="/posts" title="Posts">Post Feed</a>
-    <span> | </span>
-    <a [routerLink]="['/profile', currentUser.userId]" title="Profile">My Profile</a>
+    <!-- <span> | </span> -->
+    <!-- <a [routerLink]="['/profile', currentUser.userId]" title="Profile">My Profile</a> -->
     <!-- How to get this to route to the current user? -->
     <span> | </span>
     <a routerLink="/profile/users/all" title="Profiles">All Users</a>
-    <span> | </span>
-    <button (click)="signout()" title="Sign Out">Sign Out</button>
+
+    
+    <span *ngIf="(currentUser | json) != '{}' ">
+        <span> | </span>
+        <span>Welcome, {{currentUser.username}}</span>
+        <span> | </span>
+
+        <button (click)="signout()" title="Sign Out">Sign Out</button>
+    </span>
+    <!-- <span *ngIf="(currentUser | json) == ({} | json)">
+        <button (click)="signout()" title="Sign Out">Sign Out</button>
+    </span> -->
+    
     <hr>
 </nav>

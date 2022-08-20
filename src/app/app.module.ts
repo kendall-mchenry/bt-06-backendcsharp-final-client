@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ViewContainerRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
+import { TemplateRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,7 +37,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,6 +13,8 @@ export class PostFeedComponent implements OnInit {
 
   postList: Post[] = [];
 
+  currentPost: Post = new Post();
+
   userList: User[] = [];
 
   postUser: User = new User();
@@ -61,5 +63,19 @@ export class PostFeedComponent implements OnInit {
   // also add created date/time to the post
   // add photo to the post OR just to the user profile page?
   
+  getPostUser(postId: number) {
+    this.postService.getPostById(postId).subscribe(post => {
+      this.currentPost = post;
+    });
 
+    this.postUserId = this.currentPost.userId;
+    
+    this.userService.getUserById(this.postUserId!).subscribe(user => {
+      this.postUser = user;
+    });
+
+    this.postUsername = this.postUser.username;
+
+  }
+  
 }

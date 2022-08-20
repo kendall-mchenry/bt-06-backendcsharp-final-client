@@ -15,12 +15,17 @@ export class SignInComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+
   }
 
   signin() {
+    // Add error handling to make sure username & password are valid inputs?
+
     this.userService.signin(this.username, this.password).subscribe((response: any) => {
       // OR do these routes want to just be .navigate
-      this.router.navigateByUrl('/posts');
+      this.router.navigateByUrl('/posts').then(() => {
+        window.location.reload();
+      });
     }, error => {
       console.log('Error: ', error);
       window.alert("Unsuccessful Login");
