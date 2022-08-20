@@ -3,8 +3,14 @@
     <p *ngIf="viewUser.firstName || viewUser.lastName">Name: {{viewUser.firstName}} {{viewUser.lastName}}</p>
     <p *ngIf="viewUser.state">Location: {{viewUser.state}}</p>
     <p>Profile Created: {{viewUser.createdDate}}</p>
+    <button [routerLink]="['/profile/edit/current']" >Edit User</button>
 </div>
 <br><hr><br>
+<div *ngIf="currentUser">
+    <app-create-post></app-create-post>
+</div>
+<br><hr><br>
+
 <div>
 <h2>Posts</h2>
 <div *ngFor="let post of postList" class="post">
@@ -12,5 +18,12 @@
     <p>{{post.content}}</p>
     <br>
     <p>{{username}}</p>
+    
+    <div *ngIf="currentUser">
+        <button [routerLink]="['/posts/edit', post.postId]">Edit Post</button>
+        <span> | </span>
+        <button (click)="onItemDelete(post.postId)" >Delete Post</button>
+    </div>
+
 </div>
 </div>

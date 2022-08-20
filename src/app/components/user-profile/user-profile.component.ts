@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/app/models/post';
 import { User } from 'src/app/models/user';
 import { PostService } from 'src/app/services/post.service';
@@ -22,11 +22,13 @@ export class UserProfileComponent implements OnInit {
 
   postList: Post[] = [];
 
-  constructor(private userService: UserService, private postService: PostService, private actRoute: ActivatedRoute) { }
+  constructor(private userService: UserService, private postService: PostService, private actRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
 
     // HOW TO ALLOW CURRENT USER TO ACCESS EDIT & DELETE??
+    // Do I need some sort of IF statement here that determines what to show based on if the user is signed in or not?
+
 
     this.viewUserId = Number(this.actRoute.snapshot.paramMap.get('id'));
     this.userService.getUserById(this.viewUserId).subscribe((user) => {
@@ -62,12 +64,17 @@ export class UserProfileComponent implements OnInit {
       
       this.postList.push(placeholder);
     }
-
-
   }
 
-  // Do I need some sort of IF statement here that determines what to show based on if the user is signed in or not?
-
-  
+  onItemDelete(postId: any) {
+    this.postService.deletePostById(postId).subscribe(() => {
+      window.location.reload();
+    }, error => {
+      console.log("Error: ", error);
+      if (error.status === 401) {
+        this.router.navigate(['signin']);
+      }
+    });
+  }
 
 }

@@ -1,1 +1,11 @@
-<p>search-users works!</p>
+<div>
+    <h1>All Users</h1>
+    <div *ngIf="userList">
+        <div *ngFor="let user of userList" class="post">
+            <h3>{{user.username}}</h3>
+            <p>Member Since: {{user.createdDate}}</p>
+            <button [routerLink]="['/profile/', user.userId]">View User</button>
+        </div>
+
+    </div>
+</div>

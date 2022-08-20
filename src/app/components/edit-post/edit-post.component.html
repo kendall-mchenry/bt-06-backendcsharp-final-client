@@ -1,1 +1,15 @@
-<p>edit-post works!</p>
+<h1>Edit Post</h1>
+<form (ngSubmit)="onEditSubmit()">
+    <span>Title: </span>
+    <input type="text" name="title" [(ngModel)]="editPost.title">
+    <br><br>
+
+    <span>Post Content: </span>
+    <textarea type="text" name="content" cols="50" rows="5" [(ngModel)]="editPost.content"></textarea>
+    
+    <br><br>
+
+    <button>
+        Submit
+    </button>
+</form>

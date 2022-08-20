@@ -8,6 +8,8 @@
     <a [routerLink]="['/profile', currentUser.userId]" title="Profile">My Profile</a>
     <!-- How to get this to route to the current user? -->
     <span> | </span>
+    <a routerLink="/profile/users/all" title="Profiles">All Users</a>
+    <span> | </span>
     <button (click)="signout()" title="Sign Out">Sign Out</button>
     <hr>
 </nav>

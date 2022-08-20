@@ -79,7 +79,7 @@ export class UserService {
   }
 
   // AUTH / PUT edit user
-  editCurrentUser(): Observable<User> {
+  editCurrentUser(editUser: User): Observable<User> {
     let reqHeaders = {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     };

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-search-users',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchUsersComponent implements OnInit {
 
-  constructor() { }
+  userList: User[] = [];
+
+  currentUser: User = new User();
+
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    this.userService.getAllUsers().subscribe(users => {
+      this.userList = users;
+    });
   }
 
 }
