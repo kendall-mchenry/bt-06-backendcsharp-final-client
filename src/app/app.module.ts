@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +16,7 @@ import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { SearchUsersComponent } from './components/search-users/search-users.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +29,14 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     EditPostComponent,
     CreatePostComponent,
     SearchUsersComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

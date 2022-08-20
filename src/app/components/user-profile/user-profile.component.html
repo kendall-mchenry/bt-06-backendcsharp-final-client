@@ -1,1 +1,16 @@
-<p>user-profile works!</p>
+<div >
+    <h1>User Profile: {{viewUser.username}}</h1>
+    <p *ngIf="viewUser.firstName || viewUser.lastName">Name: {{viewUser.firstName}} {{viewUser.lastName}}</p>
+    <p *ngIf="viewUser.state">Location: {{viewUser.state}}</p>
+    <p>Profile Created: {{viewUser.createdDate}}</p>
+</div>
+<br><hr><br>
+<div>
+<h2>Posts</h2>
+<div *ngFor="let post of postList" class="post">
+    <h3>{{post.title}}</h3>
+    <p>{{post.content}}</p>
+    <br>
+    <p>{{username}}</p>
+</div>
+</div>

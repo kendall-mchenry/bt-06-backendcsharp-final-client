@@ -1,0 +1,13 @@
+<nav role="navigation">
+    <a routerLink="/signup" title="Sign Up">Sign Up</a>
+    <span> | </span>
+    <a routerLink="/signin" title="Sign In">Sign In</a>
+    <span> | </span>
+    <a routerLink="/posts" title="Posts">Post Feed</a>
+    <span> | </span>
+    <a [routerLink]="['/profile', currentUser.userId]" title="Profile">My Profile</a>
+    <!-- How to get this to route to the current user? -->
+    <span> | </span>
+    <button (click)="signout()" title="Sign Out">Sign Out</button>
+    <hr>
+</nav>

@@ -5,16 +5,17 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
   // Use for AuthService methods: signup, sign in
-  authBaseUrl: string = "https://localhost:7217/api/auth/";
+  authBaseUrl: string = "https://localhost:7217/api/auth";
 
   // Use for UserRepository methods
-  userBaseUrl: string = "https://localhost:7217/api/users/"
+  userBaseUrl: string = "https://localhost:7217/api/users"
 
   tokenKey: string = "myUserToken";
 
@@ -23,21 +24,35 @@ export class UserService {
   // Auth Methods -----------------------------------------------------------
   
   // POST create new user
-  signUp(newUser: User): Observable<any> {
+  signup(newUser: User): Observable<any> {
     return this.http.post(`${this.authBaseUrl}/signup`, newUser);
   }
 
   // POST sign in user
-  signIn(username: string, password: string): Observable<any> {
-    // How do I build this as a post request?
-    // Since the details have to be sent using the request body?
-
+  signin(username: string, password: string): Observable<any> {
     return this.http.post(`${this.authBaseUrl}/signin`, {username, password}, {responseType: 'text'})
       .pipe(tap((response: any) => {
         localStorage.setItem('myUserToken', response);
       }));
   }
 
+//   public isLoggedIn() {
+//     return moment().isBefore(this.getExpiration());
+// }
+
+// How can I tell if the user is signed in and allow certain elements to be viewed if so? -- do localstorate.getitem and tell if true or not?
+// Then can add ngif if this is true?
+
+  signout(): void {
+    localStorage.removeItem(this.tokenKey);
+  }
+
+  // logout() {
+  //   this.tokenSubscription.unsubscribe();
+  //   this.authToken = null;
+  //   this.user = null;
+  //   sessionStorage.clear();
+  // }
   
   // User Methods -----------------------------------------------------------
 
