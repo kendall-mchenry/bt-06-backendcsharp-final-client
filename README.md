@@ -1,5 +1,7 @@
 # FinalClient
 
+***This has been added/merged into the full project file at: https://github.com/kendall-mchenry/bt-06-backendcsharp-final***
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
 
 ## Development server
